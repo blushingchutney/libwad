@@ -24,13 +24,14 @@ namespace wad
     class Wad
     {
     private:
-        std::string tmppath;
-
         wadinfo_t wadinfo;
         std::vector<filelump_t> filelump;
+        std::string path;
     public:
         Wad();
         ~Wad();
+
+        void loadFromFile(const char *path);
     };
     
     
