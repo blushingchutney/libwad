@@ -13,3 +13,5 @@ add_library(
     wad_shared SHARED
     ${LIBWAD_SOURCE_FILES}
 )
+
+add_subdirectory(test)
