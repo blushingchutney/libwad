@@ -32,6 +32,9 @@ namespace wad
         ~Wad();
 
         void loadFromFile(const char *path);
+
+        const wadinfo_t* getWadinfo();
+        const filelump_t* getFilelump();
     };
     
     

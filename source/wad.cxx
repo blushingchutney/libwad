@@ -22,4 +22,12 @@ namespace wad
         fp.close();
     }
 
+    const wadinfo_t* Wad::getWadinfo() {
+        return &wadinfo;
+    }
+
+    const filelump_t* Wad::getFilelump() {
+        return filelump.data();
+    }
+
 } // namespace wad
