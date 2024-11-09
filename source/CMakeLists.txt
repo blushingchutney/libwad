@@ -14,4 +14,14 @@ add_library(
     ${LIBWAD_SOURCE_FILES}
 )
 
+install(
+    TARGETS wad_static wad_shared
+    DESTINATION lib
+)
+
+install(
+    FILES wad.hxx
+    DESTINATION include
+)
+
 add_subdirectory(test)
