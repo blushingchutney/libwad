@@ -37,6 +37,8 @@ namespace wad
         const filelump_t* getFilelump();
 
         int32_t find(const char *name, int32_t start = -1, int32_t end = -1);
+
+        std::vector<uint8_t> getData(int32_t index);
     };
     
     

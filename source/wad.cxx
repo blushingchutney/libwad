@@ -52,5 +52,15 @@ namespace wad
         return -1;
     }
 
+    std::vector<uint8_t> Wad::getData(int32_t index) {
+        std::ifstream fp(path, std::ios::binary);
+        fp.seekg(filelump[index].filepos);
 
+        std::vector<uint8_t> data;
+        data.resize(filelump[index].size);
+        fp.read((char*)data.data(), filelump[index].size);
+
+        fp.close();
+        return data;
+    }
 } // namespace wad
