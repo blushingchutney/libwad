@@ -1,3 +1,6 @@
+#include <fstream>
+#include <filesystem>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -16,6 +19,32 @@ namespace wad {
 
     Wad::~Wad() {
         remove(this->path.c_str());
+    }
+
+    void Wad::reload() {
+        std::ifstream fp;
+        fp.open(path);
+
+        fp.read((char*)&wadinfo, sizeof(wadinfo_t));
+
+        filelump.resize(wadinfo.numlumps);
+
+        fp.seekg(wadinfo.infotableofs);
+        fp.read((char*)filelump.data(), sizeof(filelump_t) * wadinfo.numlumps);
+
+        fp.close();
+    }
+    
+    void Wad::loadFromFile(const char *path) {
+        std::filesystem::copy(path, this->path);
+        reload();
+    }
+
+    void Wad::loadFromMemory(const void *data, std::streamsize size) {
+        std::ofstream fp(path);
+        fp.write((char*)data, size);
+        fp.close();
+        reload();
     }
 
 }

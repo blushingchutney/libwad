@@ -24,8 +24,12 @@ namespace wad {
             std::vector<filelump_t> filelump;
             std::string path;
         
+            void reload();
         public:
             Wad();
             ~Wad();
+
+            void loadFromFile(const char *path);
+            void loadFromMemory(const void *data, std::streamsize size);
     };
 }
