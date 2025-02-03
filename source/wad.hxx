@@ -31,5 +31,8 @@ namespace wad {
 
             void loadFromFile(const char *path);
             void loadFromMemory(const void *data, std::streamsize size);
+
+            const wadinfo_t& getWadinfo();
+            const filelump_t& getFilelump(int32_t index);
     };
 }

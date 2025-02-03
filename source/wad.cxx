@@ -47,4 +47,12 @@ namespace wad {
         reload();
     }
 
+    const wadinfo_t& Wad::getWadinfo() {
+        return wadinfo;
+    }
+
+    const filelump_t& Wad::getFilelump(int32_t index) {
+        return filelump[index];
+    }
+
 }
