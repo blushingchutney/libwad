@@ -1,1 +1,31 @@
 #pragma once
+
+#include <vector>
+#include <string>
+
+#include <stdint.h>
+
+namespace wad {
+    struct wadinfo_t {
+        uint8_t identification[4];
+        int32_t numlumps;
+        int32_t infotableofs;
+    };
+
+    struct filelump_t {
+        int32_t filepos;
+        int32_t size;
+        uint8_t name[8];
+    };
+
+    class Wad {
+        private:
+            wadinfo_t wadinfo;
+            std::vector<filelump_t> filelump;
+            std::string path;
+        
+        public:
+            Wad();
+            ~Wad();
+    };
+}
