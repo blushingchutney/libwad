@@ -1,3 +1,9 @@
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/test.wad
+    ${CMAKE_CURRENT_BINARY_DIR}/test.wad
+    COPYONLY
+)
+
 add_executable(
     test
     test.cxx
