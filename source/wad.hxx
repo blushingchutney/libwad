@@ -34,5 +34,6 @@ namespace wad {
 
             const wadinfo_t& getWadinfo();
             const filelump_t& getFilelump(int32_t index);
+            void getData(void *buffer, int32_t position, int32_t size);
     };
 }

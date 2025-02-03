@@ -23,7 +23,7 @@ namespace wad {
 
     void Wad::reload() {
         std::ifstream fp;
-        fp.open(path);
+        fp.open(path, std::ios::binary);
 
         fp.read((char*)&wadinfo, sizeof(wadinfo_t));
 
@@ -41,7 +41,8 @@ namespace wad {
     }
 
     void Wad::loadFromMemory(const void *data, std::streamsize size) {
-        std::ofstream fp(path);
+        std::ofstream fp;
+        fp.open(path, std::ios::binary);
         fp.write((char*)data, size);
         fp.close();
         reload();
@@ -53,6 +54,14 @@ namespace wad {
 
     const filelump_t& Wad::getFilelump(int32_t index) {
         return filelump[index];
+    }
+
+    void Wad::getData(void *buffer, int32_t position, int32_t size) {
+        std::ifstream fp;
+        fp.open(path, std::ios::binary);
+        fp.seekg(position);
+        fp.read((char*)buffer, size);
+        fp.close();
     }
 
 }
