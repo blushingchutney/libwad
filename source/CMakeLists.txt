@@ -3,3 +3,5 @@ add_library(
     wad.cxx
     wad.hxx
 )
+
+add_subdirectory(test)
