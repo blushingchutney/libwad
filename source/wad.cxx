@@ -64,4 +64,21 @@ namespace wad {
         fp.close();
     }
 
+    int32_t Wad::find(const std::string &_name) {
+        std::string name = _name;
+        name.resize(8, '\0');
+
+        for(int32_t i = 0;i < 8;i++) {
+            name[i] = toupper(name[i]);
+        }
+
+        for(int32_t i = 0;i < wadinfo.numlumps;i++) {
+            if(!memcmp(name.c_str(), filelump[i].name, 8)) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
 }
